@@ -10,5 +10,6 @@ namespace TrafficLight.Abstracts.Controllers
         LightColor OldLightColor { get; set; }
         ITrafficLightDataContainer LightDataContainer { get; }
         SpriteRenderer SpriteRenderer { get; }
+        Transform TrafficWaitPoint { get; }
     }
 }

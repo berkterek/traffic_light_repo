@@ -18,10 +18,12 @@ namespace TrafficLight.Controllers
         [SerializeField] LightColor _currentLightColor;
         [SerializeField] LightColor _oldLightColor;
         [SerializeField] Transform _transform;
+        [SerializeField] Transform _trafficWaitPoint;
         [SerializeField] SpriteRenderer _spriteRenderer;
 
         IStateMachine _stateMachine;
         public ITrafficLightDataContainer LightDataContainer { get; private set; }
+        public Transform TrafficWaitPoint => _trafficWaitPoint;
         public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
         public LightColor CurrentLightColor
