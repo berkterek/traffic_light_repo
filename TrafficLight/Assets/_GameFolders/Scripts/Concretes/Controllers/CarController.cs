@@ -37,24 +37,7 @@ namespace TrafficLight.Controllers
 
         void Update()
         {
-            if (_trafficController != null)
-            {
-                if (_trafficController.CurrentLightColor == LightColor.Red ||
-                    _trafficController.CurrentLightColor == LightColor.RedAmber)
-                {
-                    var position = _trafficController.TrafficWaitPoint.position;
-                    _isNearWaitPoint = Vector3.Distance(position, _transform.position) < 0.1f;
-                    _mover.Tick(position);
-                    return;
-                }
-                else if (_trafficController.CurrentLightColor == LightColor.Amber)
-                {
-                    if (_isNearWaitPoint)
-                    {
-                        return;
-                    }
-                }
-            }
+            if (IsTrafficNotNull()) return;
 
             _isNearWaitPoint = false;
             _mover.Tick(_currentTarget.position);
@@ -107,6 +90,30 @@ namespace TrafficLight.Controllers
             }
 
             _currentTarget = _points[_pointIndex];
+        }
+
+        private bool IsTrafficNotNull()
+        {
+            if (_trafficController != null)
+            {
+                if (_trafficController.CurrentLightColor == LightColor.Red ||
+                    _trafficController.CurrentLightColor == LightColor.RedAmber)
+                {
+                    var position = _trafficController.TrafficWaitPoint.position;
+                    _isNearWaitPoint = Vector3.Distance(position, _transform.position) < 0.1f;
+                    _mover.Tick(position);
+                    return true;
+                }
+                else if (_trafficController.CurrentLightColor == LightColor.Amber)
+                {
+                    if (_isNearWaitPoint)
+                    {
+                        return true;
+                    }
+                }
+            }
+
+            return false;
         }
     }
 }
