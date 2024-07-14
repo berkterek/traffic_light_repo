@@ -16,3 +16,12 @@ MonoBehaviour:
   _redAmberDuration: 2
   _amberDuration: 3
   _greenDuration: 5
+  _colorHolders:
+  - Type: 1
+    Color: {r: 1, g: 0, b: 0, a: 1}
+  - Type: 2
+    Color: {r: 1, g: 0.4002926, b: 0, a: 1}
+  - Type: 3
+    Color: {r: 1, g: 0.6223973, b: 0, a: 1}
+  - Type: 4
+    Color: {r: 0.21807075, g: 1, b: 0, a: 1}

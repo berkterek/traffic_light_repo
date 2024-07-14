@@ -1,4 +1,3 @@
-using System;
 using TrafficLight.Abstracts.Controllers;
 using TrafficLight.Abstracts.DataContainers;
 using TrafficLight.Abstracts.Factories;
@@ -9,7 +8,6 @@ using TrafficLight.Helpers;
 using TrafficLight.StateMachines;
 using TrafficLight.StateMachines.States;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace TrafficLight.Controllers
 {
@@ -20,9 +18,11 @@ namespace TrafficLight.Controllers
         [SerializeField] LightColor _currentLightColor;
         [SerializeField] LightColor _oldLightColor;
         [SerializeField] Transform _transform;
+        [SerializeField] SpriteRenderer _spriteRenderer;
 
-        ITrafficLightDataContainer _lightDataContainer;
         IStateMachine _stateMachine;
+        public ITrafficLightDataContainer LightDataContainer { get; private set; }
+        public SpriteRenderer SpriteRenderer => _spriteRenderer;
 
         public LightColor CurrentLightColor
         {
@@ -39,6 +39,7 @@ namespace TrafficLight.Controllers
         void OnValidate()
         {
             this.GetReference(ref _transform);
+            this.GetReference(ref _spriteRenderer);
         }
 
         void Awake()
@@ -54,12 +55,12 @@ namespace TrafficLight.Controllers
         private void Init()
         {
             ITrafficLightDataFactory trafficDataFactory = new TrafficLightDataResourceFactory(ConstHelper.TrafficDataPathKey);
-            _lightDataContainer = trafficDataFactory.Create();
+            LightDataContainer = trafficDataFactory.Create();
 
-            IState red = new RedState(this, _lightDataContainer.RedDuration);
-            IState green = new GreenState(this, _lightDataContainer.GreenDuration);
-            IState redAmber = new RedAmberState(this, _lightDataContainer.RedAmberDuration);
-            IState amber = new AmberState(this, _lightDataContainer.AmberDuration);
+            IState red = new RedState(this, LightDataContainer.RedDuration);
+            IState green = new GreenState(this, LightDataContainer.GreenDuration);
+            IState redAmber = new RedAmberState(this, LightDataContainer.RedAmberDuration);
+            IState amber = new AmberState(this, LightDataContainer.AmberDuration);
 
             if ((_isGreenStart && _isRedStart) || (!_isGreenStart && !_isRedStart))
             {

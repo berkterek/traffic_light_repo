@@ -24,6 +24,7 @@ namespace TrafficLight.StateMachines.States
                 _trafficController.CurrentLightColor = LightColor.Green;    
             }
             
+            _trafficController.SpriteRenderer.color = _trafficController.LightDataContainer.GetColor(LightColor.Green);
             Debug.Log($"Enter traffic color state => {_trafficController.CurrentLightColor}");
             _currentTime = 0f;
         }

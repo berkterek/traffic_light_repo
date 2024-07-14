@@ -23,7 +23,8 @@ namespace TrafficLight.StateMachines.States
             {
                 _trafficController.CurrentLightColor = LightColor.Red;    
             }
-            
+
+            _trafficController.SpriteRenderer.color = _trafficController.LightDataContainer.GetColor(LightColor.Red);
             Debug.Log($"Enter traffic color state => {_trafficController.CurrentLightColor}");
             _currentTime = 0f;
         }

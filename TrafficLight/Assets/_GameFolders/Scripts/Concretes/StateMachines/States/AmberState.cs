@@ -19,6 +19,7 @@ namespace TrafficLight.StateMachines.States
         
         public void Enter()
         {
+            _trafficController.SpriteRenderer.color = _trafficController.LightDataContainer.GetColor(LightColor.Amber);
             Debug.Log($"Enter traffic color state => {_trafficController.CurrentLightColor}");
             _currentTime = 0f;
         }

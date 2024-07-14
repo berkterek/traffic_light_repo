@@ -1,10 +1,14 @@
+using TrafficLight.Enums;
+using UnityEngine;
+
 namespace TrafficLight.Abstracts.DataContainers
 {
     public interface ITrafficLightDataContainer
     {
-        public float RedDuration { get; }
-        public float RedAmberDuration { get; }
-        public float AmberDuration { get; }
-        public float GreenDuration { get; }
+        float RedDuration { get; }
+        float RedAmberDuration { get; }
+        float AmberDuration { get; }
+        float GreenDuration { get; }
+        Color GetColor(LightColor lightColor);
     }
 }
