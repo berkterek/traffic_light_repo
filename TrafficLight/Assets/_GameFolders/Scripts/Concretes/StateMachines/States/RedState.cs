@@ -19,6 +19,11 @@ namespace TrafficLight.StateMachines.States
         
         public void Enter()
         {
+            if (_trafficController.CurrentLightColor == LightColor.None)
+            {
+                _trafficController.CurrentLightColor = LightColor.Red;    
+            }
+            
             Debug.Log($"Enter traffic color state => {_trafficController.CurrentLightColor}");
             _currentTime = 0f;
         }

@@ -173,6 +173,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TraffiicLight
       objectReference: {fileID: 0}
+    - target: {fileID: 4907973464758490693, guid: 73c22c656a007499bb80d4f4bda24125, type: 3}
+      propertyPath: _isRedStart
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 8685159376723866280, guid: 73c22c656a007499bb80d4f4bda24125, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
