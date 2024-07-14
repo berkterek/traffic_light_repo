@@ -15,6 +15,4 @@ namespace TrafficLight.StateMachines
             Condition = condition;
         }
     }
-    
-    
 }
